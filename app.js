@@ -64,11 +64,6 @@ const sessionOptions = {
 
 }
 
-// app.get('/', (req,res)=>{
-//     res.send('Hi i am groot');
-//     // res.redirect('/listings');
-// })
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -85,16 +80,6 @@ app.use((req, res, next) => {
     res.locals.currUser = req.user;
     next();
 })
-
-// app.get('/demouser', async (req, res) => {
-//     let fakeUser = new User({
-//         email: "stud@gmail.com",
-//         username: "genzAlpha"
-//     });
-
-//     let registeredUser = await User.register(fakeUser, "HeheLol");
-//     res.send(registeredUser);
-// })
 
 app.use('/listings', listingRouter);
 app.use('/listings/:id/reviews', reviewsRouter);
