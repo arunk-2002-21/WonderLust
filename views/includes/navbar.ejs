@@ -1,58 +1,117 @@
 <style>
-  .search-btn{
-    background-color: #fe424d;
-    color: #fff;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
+  #user-icon{
+    display: none;
   }
-  .search-btn:hover{
-    background-color: #fe424d;
-    color: #fff;
-  }
-
-  .search-btn i {
-    display: inline;
+  .ui-1{
     margin-right: 0.5rem;
   }
-
-  .search-inp{
-    border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
-    font-size: 1rem;
+  .n-end{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-right: -1rem;
+  }
+  .ui-2 {
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 0.5rem;
+    background-color: black;
+    color: white;
+  }
+  .ui {
+    border: 1px solid #b1b1b1;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    transition: all 0.25s ease;
+  }
+  .ui:hover{
+    box-shadow: 0 2px 4px 0 rgb(125, 125, 125);
+  }
+  .li{
+    padding: 0.5rem 0.85rem;
+    margin: 0 0.5rem;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+  }
+  .li:hover{
+    background-color: #cdcdcd;
+  }
+  .li,.ui,.user-icon,.language-icon{
+    cursor: pointer;
   }
 </style>
-
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<nav class="navbar nav-a navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-      data-bs-target="#navbarNavAltMarkup" >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        
-      <div class="navbar-nav">
-          <a class="nav-link" href="/listings">Explore</a>
+      <div class="logo-div">
+        <a href="/listings">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg" alt="logo" class="navbar-logo"> 
+        </a>
+      </div> 
+      <div class="container-fluid n-end">
+          <div class="home">
+            <a href="/listings/new" class="home-airbnb list-group-item list-group-item-action">Airbnb your home</a>
+          </div>
+          <div class="form-check form-switch li">
+            <input class="form-check-input switch-radio" type="checkbox" role="switch" id="user-icon">
+              <label class="form-check-label" for="lang-icon">
+                <div class="language-icon">
+                  <i class="fa-solid fa-globe"></i> 
+                </div>
+              </label>            
+          </div>
+          <div class="form-check form-switch ui">
+              <input class="form-check-input switch-radio" type="checkbox" role="switch" id="user-icon">
+              <label class="form-check-label" for="user-icon">  
+                <div class="user-icon">
+                  <i class="fa-solid fa-bars user-icon ui-1"></i>
+                  <i class="fa-regular fa-user user-icon ui-2"></i>
+                </div> 
+              </label>
+          </div>          
+        </div>
       </div>
-
-
-      <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" >
-          <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-        </form>
-      </div>  
-
-      <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new">Airbnb your home</a>
-          <% if(!currUser) { %>
-            <a class="nav-link" href="/signup" ><b>Sign up</b><a>
-            <a class="nav-link" href="/login"><b>Log in</b></a>
-          <% } %>
-          <% if(currUser) { %>
-            <a class="nav-link" href="/logout">Log out</a>
-          <% } %>
-      </div>
+        <div id="lg">
+          <div class="list-group list_group">
+              <% if(!currUser){ %>
+                  <a href="/signup" class="list-group-item list-group-item-action"><b>Sign up</b></a>
+                  <a href="/login" class="list-group-item list-group-item-action">Log in</a>
+                  <div class="bb"></div>
+              <% } %>
+              <% if(currUser){ %>
+                  <a href="/logout" class="list-group-item list-group-item-action">
+                    Log out
+                  </a>
+                  <div class="bb"></div>
+              <% } %>
+            <a href="/listings/new" class="list-group-item list-group-item-action">Airbnb your home</a>
+            <a href="#" class="list-group-item list-group-item-action">Help Center</a>
+          </div>
       </div>
     </div>
-  </nav>
+</nav>
+
+
+<!-- Bottom Nav-Bar -->
+  
+<ul class="nav justify-content-center nav-b">
+  <li class="nav-item">
+    <a class="nav-link" href="/listings/new">
+      <i class="fa-solid fa-house fa-xl"></i>
+      <p style="font-size: 0.75rem;  margin: 0;">Home</p>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/signup">
+      <i class="fa-solid fa-user-plus fa-xl"></i>
+      <p style="font-size: 0.75rem;  margin: 0;">Sign up</p>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/login">
+      <i class="fa-solid fa-circle-user fa-xl"></i>
+      <p style="font-size: 0.75rem;  margin: 0;">Sign in</p>
+    </a>
+  </li>
+</ul>
+
+

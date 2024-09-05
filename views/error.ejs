@@ -1,7 +1,5 @@
-<% layout("/layouts/boilerplate") %>
+<% layout("/layouts/boiler.ejs") %>
 
-<div class="row mt-5">
-    <div class="alert alert-danger col-6 offset-3" role="alert">
-        <p class="alert-heading"><%= message %></p>
-      </div>
+<div class="alert alert-danger err" role="alert">
+    <h5 class="errMessage"><%= err.message %></h5>
 </div>
