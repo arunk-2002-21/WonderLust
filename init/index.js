@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const initData = require('./data.js');
 const Listing = require('../models/listing.js');
-
-const MONGO_URL = "mongodb+srv://arunkamble122402:ITVpGIftqPq133WG@movielist.xclusj4.mongodb.net/?retryWrites=true&w=majority";
+require('dotenv').config();
+const MONGO_URL = process.env.MONGO_ATLAS;
 
 main().then(() => {
     console.log("Connected to DB");
