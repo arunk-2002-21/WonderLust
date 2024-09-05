@@ -1,43 +1,21 @@
 <%- layout("/layouts/boiler.ejs") %>
 <script>
-  const mapToken = "<%= process.env.MAP_TOKEN %>";
-  const listing = "<%- JSON.stringify(listing) %>";
+  const mapToken = "<%= process.env.MAP_TOKEN %>"
+  const listing = '<%- JSON.stringify(listing) %>';
 </script>
-<div>
-  <div class="card mb-3 mt-3" >
-    <div class="row g-0">
-      <div class="col-md-5">
-        <img src="<%= listing.image.url %>" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-6">
-        <div class="card-body">
-          <h5 class="card-title"><b><%= listing.title %></b></h5>
-          <p class="card-text"><%= listing.description %>.</p>
-          <p class="card-text"><%= listing.owner.username %>.</p>
-          <p class="card-text"><b>&#8377; <%= listing.price.toLocaleString("en-IN") %></b></p>
-          <p class="card-text"><%= listing.location %>, <b><%= listing.country %></b></p>
-          <% if(listing.reviews.length > 0) {%>
-            <p class="card-text r">
-              <% let sum=0; %>
-              <% for(review of listing.reviews) {%>
-                <% sum = sum + review.rating; %>
-              <% } %>
-              <i class="fa-solid fa-star"></i>
-              <%= sum/listing.reviews.length %>
-            </p>
-          <% } %>
-        </div>
-        <div class="btn-primary gap-2 col-6 btns">
-          <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
-            <form method="GET" action="/listings/<%= listing._id %>/edit">
-              <button class="btn btn-success" >Edit</button>
-            </form>
-            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-              <button class="btn btn-outline-danger" type="submit">Delete</button>
-            </form>
-            <% } %>
-        </div>              
-      </div>
+
+<div class="row mt-3">
+  <div class="col-8 offset-3">
+    <h3><%= listing.title %></h3>
+  </div>
+  <div class="card col-6 offset-3 show-card listing-card">
+    <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
+    <div class="card-body" style="border-radius: 0;">
+      <p class="card-text">Owned by: <i><%= listing.owner.username %></i></p>
+      <p class="card-text">  <%= listing.description %> </p>
+      <p class="card-text">  &#8377; <%= listing.price.toLocaleString("en-IN") %> </p>
+      <p class="card-text">  <%= listing.location %> </p>
+      <p class="card-text">  <%= listing.country %> </p>  
     </div>
   </div>
   
